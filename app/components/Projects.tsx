@@ -50,14 +50,14 @@ export function Projects() {
         </motion.div>
 
         <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={inView}
-          className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.05 }} // Triggers when just 5% is visible
+            className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+              <ProjectCard key={project.title} project={project} />
           ))}
         </motion.div>
 

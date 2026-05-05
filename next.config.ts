@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['10.0.0.48'],
+
   images: {
     remotePatterns: [
       // Hero placeholder images. Remove once real photography is added.
@@ -9,6 +11,7 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+
     ],
   },
 };

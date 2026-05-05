@@ -52,7 +52,7 @@ export function Services() {
               <motion.article
                 key={service.title}
                 variants={fadeUp}
-                className="group relative flex flex-col rounded-sm border border-stone-50/10 bg-slate-900/40 p-8 transition-all duration-500 hover:border-accent-300/40 hover:bg-slate-900"
+                className="group relative flex flex-col rounded-sm border border-stone-50/10 bg-slate-900/40 p-8 transition-colors duration-500 hover:border-accent-300/40 hover:bg-slate-900"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-stone-50/5 ring-1 ring-stone-50/10 transition-colors duration-500 group-hover:bg-accent-500/15 group-hover:ring-accent-300/40">
                   <Icon

@@ -90,7 +90,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.article
       variants={fadeUp}
-      className="group relative flex flex-col overflow-hidden rounded-sm border border-stone-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
+      className="group relative flex flex-col overflow-hidden rounded-sm border border-stone-200 bg-white shadow-sm transition-opacity duration-500 hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-stone-200">
         <Image

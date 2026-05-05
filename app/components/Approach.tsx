@@ -3,8 +3,19 @@
 import { motion } from "framer-motion";
 import { fadeUp, inView, staggerContainer } from "../lib/animations";
 import { processSteps } from "../lib/content";
+import {useEffect, useState} from "react";
 
 export function Approach() {
+  const [mobile, setIsMobile] = useState<boolean>(window.innerWidth < 768)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    window.addEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, []);
   return (
     <section id="approach" className="bg-stone-50 py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -14,6 +25,7 @@ export function Approach() {
           whileInView="show"
           viewport={inView}
           className="mx-auto max-w-2xl text-center"
+
         >
           <motion.span
             variants={fadeUp}
@@ -38,7 +50,7 @@ export function Approach() {
               <br/>
               <div className={"flex flex-col-reverse relative"}>
                 <span className={""}>Detailed by nature</span>
-                <motion.span whileInView={{width: ["0%","60.25%"]}} transition={{ease: "easeInOut", duration: 0.5, delay: 1.8}} viewport={{once: true}} className={"bg-black h-[5px] absolute bottom-1 left-1/5"}></motion.span>
+                <motion.span whileInView={{width: ["0%",`${mobile ? '100%' : '60.25%'}`]}} transition={{ease: "easeInOut", duration: 0.5, delay: 1.8}} viewport={{once: true}} className={"bg-black h-[5px] absolute bottom-1 left-1/5"}></motion.span>
               </div>
             </div>
           </motion.h2>

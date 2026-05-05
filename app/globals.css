@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
+/*
+ * Brand palette — "Hard working, attention to detail, taking my time."
+ *
+ *   --slate-*  Deep, trustworthy blues. Primary brand color, used for surfaces,
+ *              headings, and structural elements.
+ *   --stone-*  Warm neutrals. Backgrounds, dividers, secondary text.
+ *   --accent-* Muted burnt-gold. Reserved for CTAs and high-priority highlights —
+ *              used sparingly so it always reads as "act now".
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf9;       /* warm off-white (stone-50) */
+  --foreground: #1c2433;       /* deep slate ink */
+
+  --slate-50:  #f1f4f9;
+  --slate-100: #dde3ee;
+  --slate-200: #b9c4d7;
+  --slate-300: #8a9ab5;
+  --slate-500: #4a5b78;
+  --slate-700: #2b3954;
+  --slate-900: #14203a;
+  --slate-950: #0b1428;
+
+  --stone-50:  #fafaf9;
+  --stone-100: #f3f1ed;
+  --stone-200: #e6e2dc;
+  --stone-300: #c9c3b8;
+  --stone-500: #7d756a;
+  --stone-700: #4a443c;
+  --stone-900: #211e19;
+
+  --accent-50:  #fbf3e6;
+  --accent-100: #f3e0b8;
+  --accent-300: #d4a85a;
+  --accent-500: #b07f2c;       /* primary CTA fill */
+  --accent-600: #97681e;
+  --accent-700: #7a5318;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-slate-50:  var(--slate-50);
+  --color-slate-100: var(--slate-100);
+  --color-slate-200: var(--slate-200);
+  --color-slate-300: var(--slate-300);
+  --color-slate-500: var(--slate-500);
+  --color-slate-700: var(--slate-700);
+  --color-slate-900: var(--slate-900);
+  --color-slate-950: var(--slate-950);
+
+  --color-stone-50:  var(--stone-50);
+  --color-stone-100: var(--stone-100);
+  --color-stone-200: var(--stone-200);
+  --color-stone-300: var(--stone-300);
+  --color-stone-500: var(--stone-500);
+  --color-stone-700: var(--stone-700);
+  --color-stone-900: var(--stone-900);
+
+  --color-accent-50:  var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-300: var(--accent-300);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+
+  --font-sans:    var(--font-inter);
+  --font-display: var(--font-inter);
+  --font-serif:   var(--font-source-serif);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }

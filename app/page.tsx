@@ -6,7 +6,7 @@ import { Projects } from "./components/Projects";
 import { LeadForm } from "./components/LeadForm";
 import { TrustSignals } from "./components/TrustSignals";
 import { Footer } from "./components/Footer";
-import {WindowPreviews} from "@/app/components/WiindowPreviews";
+import {WindowPreviews} from "@/app/components/WindowPreviews";
 
 /*
  * Landing page composition.

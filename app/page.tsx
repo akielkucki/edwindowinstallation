@@ -6,6 +6,7 @@ import { Projects } from "./components/Projects";
 import { LeadForm } from "./components/LeadForm";
 import { TrustSignals } from "./components/TrustSignals";
 import { Footer } from "./components/Footer";
+import {WindowPreviews} from "@/app/components/WiindowPreviews";
 
 /*
  * Landing page composition.
@@ -22,6 +23,7 @@ export default function Page() {
       <main className="flex flex-col">
         <Hero />
         <Approach />
+          <WindowPreviews/>
         <Services />
         <Projects />
         <LeadForm />

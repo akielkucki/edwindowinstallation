@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import {
   fadeIn,
@@ -10,6 +11,8 @@ import {
   staggerContainer,
 } from "../lib/animations";
 import { Field, inputClass, selectClass } from "./Field";
+import { useWindowList } from "../lib/WindowListContext";
+import { SavedWindowsList, serializeSavedList } from "./SavedWindowsList";
 
 /*
  * Qualified lead form.
@@ -34,12 +37,13 @@ const homeownerOptions = [
 
 export function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { items } = useWindowList();
 
   return (
     <section id="quote" className="relative bg-stone-100 py-28 sm:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <LeftRail />
+          <LeftRail savedCount={items.length} />
 
           <motion.div
             variants={fadeIn}
@@ -52,7 +56,11 @@ export function LeadForm() {
               {submitted ? (
                 <SubmittedState />
               ) : (
-                <FormBody onSubmit={() => setSubmitted(true)} />
+                <FormBody
+                  savedListText={serializeSavedList(items)}
+                  savedCount={items.length}
+                  onSubmit={() => setSubmitted(true)}
+                />
               )}
             </div>
           </motion.div>
@@ -64,7 +72,7 @@ export function LeadForm() {
 
 /* ──────────────────────────────────────────────────────────────────── */
 
-function LeftRail() {
+function LeftRail({ savedCount }: { savedCount: number }) {
   return (
     <motion.div
       variants={staggerContainer}
@@ -109,20 +117,63 @@ function LeftRail() {
           </motion.li>
         ))}
       </motion.ul>
+
+      {savedCount > 0 && (
+        <motion.div variants={fadeUp} className="mt-10 border-t border-stone-200 pt-8">
+          <p className="text-xs font-medium tracking-[0.22em] text-accent-600 uppercase">
+            Configured · {savedCount}
+          </p>
+          <p className="mt-3 font-serif text-sm leading-relaxed text-stone-700">
+            We&apos;ll include the full spec for every window you&apos;ve
+            saved with your request — sizes, finishes, glass packages,
+            grilles, the lot.
+          </p>
+          <div className="mt-5">
+            <SavedWindowsList variant="compact" />
+          </div>
+          <Link
+            href="/design"
+            className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 transition-colors hover:text-accent-600"
+          >
+            Edit list
+            <ChevronRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
+      )}
     </motion.div>
   );
 }
 
-function FormBody({ onSubmit }: { onSubmit: () => void }) {
+function FormBody({
+  onSubmit,
+  savedListText,
+  savedCount,
+}: {
+  onSubmit: () => void;
+  savedListText: string;
+  savedCount: number;
+}) {
   return (
     <form
       className="space-y-7"
       onSubmit={(e) => {
         e.preventDefault();
-        // Replace with real submit handler / server action.
+        /* The hidden field below carries the configured-window list.
+           Replace with a real handler / server action — the FormData
+           will already contain "saved-windows" with the full spec. */
         onSubmit();
       }}
     >
+      {savedCount > 0 && (
+        <div className="rounded-sm border border-accent-300 bg-accent-50 px-4 py-3 text-sm text-slate-900">
+          <span className="font-semibold">
+            {savedCount} configured window{savedCount === 1 ? "" : "s"}
+          </span>{" "}
+          will be sent with this request.
+        </div>
+      )}
+      <input type="hidden" name="saved-windows" value={savedListText} />
+      <input type="hidden" name="saved-windows-count" value={savedCount} />
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full Name" htmlFor="name">
           <input

@@ -280,7 +280,7 @@ function DesktopActions({ progress }: { progress: MotionValue<number> }) {
       </motion.a>
 
       <motion.a
-        href="#quote"
+        href="/#quote"
         className="group inline-flex items-center gap-1.5 rounded-full bg-accent-500 text-sm font-semibold whitespace-nowrap text-stone-50 shadow-sm transition-colors duration-300 hover:bg-accent-600"
         style={{
           paddingTop: ctaPaddingY,
@@ -396,7 +396,7 @@ function MobileSheet({
               className="mt-auto flex flex-col gap-3 pt-12"
             >
               <a
-                href="#quote"
+                href="/#quote"
                 onClick={onClose}
                 className="inline-flex items-center justify-center gap-2 rounded-sm bg-accent-500 px-5 py-4 text-base font-semibold text-stone-50 transition-colors hover:bg-accent-600"
               >

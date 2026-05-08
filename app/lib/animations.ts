@@ -52,4 +52,4 @@ export const heroImageReveal: Variants = {
 };
 
 /* Standard scroll-triggered viewport config. */
-export const inView = { once: true, amount: 0.25 } as const;
+export const inView = { once: true, amount: 0.05 } as const;

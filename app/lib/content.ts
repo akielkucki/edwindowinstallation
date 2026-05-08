@@ -20,11 +20,11 @@ import {
 export type NavLink = { label: string; href: string };
 
 export const navLinks: NavLink[] = [
-  { label: "Approach", href: "#approach" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#quote" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Windows", href: "/#window-types" },
+  { label: "Projects", href: "/#projects" },
+  { label: "My List", href: "/design" },
+  { label: "Contact", href: "/#quote" },
 ];
 
 export type ProcessStep = {

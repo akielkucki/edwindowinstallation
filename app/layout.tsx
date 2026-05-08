@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
+import { WindowListProvider } from "./lib/WindowListContext";
 
 // Inter — sturdy, geometric sans for headings and UI. Solid and legible.
 const inter = Inter({
@@ -34,7 +35,7 @@ export default function RootLayout({
       className={`${inter.variable} ${sourceSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-stone-50 text-slate-900">
-        {children}
+        <WindowListProvider>{children}</WindowListProvider>
       </body>
     </html>
   );

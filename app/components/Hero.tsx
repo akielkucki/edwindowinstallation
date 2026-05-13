@@ -8,6 +8,7 @@ import {
   heroImageReveal,
   staggerContainer,
 } from "../lib/animations";
+import RatingBadge from "@/app/components/RatingBadge";
 
 export function Hero() {
   return (
@@ -41,14 +42,7 @@ export function Hero() {
           animate="show"
           className="max-w-3xl"
         >
-          <motion.span
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-stone-50/20 bg-stone-50/5 px-4 py-1.5 text-xs font-medium tracking-[0.18em] text-stone-200 uppercase backdrop-blur-sm"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-accent-300" />
-            Family-owned · Licensed &amp; Insured
-          </motion.span>
-
+          <RatingBadge/>
           <motion.h1
             variants={fadeUp}
             className="mt-8 font-display text-5xl leading-[1.05] font-semibold tracking-tight text-stone-50 sm:text-6xl lg:text-7xl"

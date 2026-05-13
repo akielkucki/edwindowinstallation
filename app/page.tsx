@@ -7,6 +7,9 @@ import { LeadForm } from "./components/LeadForm";
 import { TrustSignals } from "./components/TrustSignals";
 import { Footer } from "./components/Footer";
 import {WindowPreviews} from "@/app/components/WindowPreviews";
+import {FAQ} from "@/app/components/FAQ";
+import {UsVsThem} from "@/app/components/UsVsThem";
+import {OldWindows} from "@/app/components/OldWindows";
 
 /*
  * Landing page composition.
@@ -23,9 +26,12 @@ export default function Page() {
       <main className="flex flex-col">
         <Hero />
         <Approach />
+        <OldWindows />
           <WindowPreviews/>
         <Services />
+        <UsVsThem />
         <Projects />
+          <FAQ/>
         <LeadForm />
         <TrustSignals />
       </main>

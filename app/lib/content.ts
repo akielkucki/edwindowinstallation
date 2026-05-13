@@ -32,6 +32,10 @@ export type ProcessStep = {
   title: string;
   body: string;
 };
+export type FAQ = {
+  question: string;
+  answer: string;
+};
 
 export const processSteps: ProcessStep[] = [
   {
@@ -200,7 +204,29 @@ export const testimonials: Testimonial[] = [
     location: "Bay window · Summit",
   },
 ];
+export const faqs: FAQ[] = [
+  {
+    question: "What's the difference between a double-hung and a single-hung window?",
+    answer: "Double-hung windows are the most common in the market. They're the most expensive, but they're the most durable.",
+  },
+  {
+    question: "How long does it take to install a window?",
+    answer: "It depends on the size and complexity of the window, but most installations take between 4 and 8 hours per window.",
+  },
+  {
+    question: "Do you offer financing?",
+    answer: "Yes, we offer a 10% down payment on all projects. We'll pay the rest in full after the first month.",
+  },
+  {
+    question: "What if I have a question about a specific project?",
+    answer: "Feel free to reach out to us at <EMAIL> and we'll be happy to answer your questions.",
+  },
+  {
+    question: "What if I have a question about the service?",
+    answer: "We're here to help! Reach out to us at <EMAIL> and we'll be happy to answer your questions.",
+  }
 
+]
 export const serviceAreas = [
   "Maplewood",
   "Westfield",

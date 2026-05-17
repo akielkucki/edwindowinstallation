@@ -239,6 +239,7 @@ export function LeadForm() {
                             animate="center"
                             exit="exit"
                             transition={{ duration: 0.35, ease: EASE_OUT }}
+                            className={"mt-6"}
                           >
                             <StepHeader meta={STEPS[step]} />
                             <div className="mt-7">

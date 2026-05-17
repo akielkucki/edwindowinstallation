@@ -1,22 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronRight, Star } from "lucide-react";
+import { ChevronRight, Star, Quote } from "lucide-react";
 import {
   fadeIn,
   fadeUp,
   inView,
   staggerContainer,
 } from "../lib/animations";
-import { testimonials } from "../lib/content";
+import { testimonials, type Testimonial } from "../lib/content";
+import { Marquee } from "@/components/ui/marquee";
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { cn } from "@/lib/utils";
 
 /*
- * Trust signals
- *
- * The Google Business Profile widget will replace the testimonial grid
- * once the embed is supplied. Until then, the static quotes below act
- * as a placeholder shaped like the real widget output.
+ * TrustSignals — three featured reviews on top, an infinite Marquee
+ * of secondary reviews below. Real Google Business Profile embed will
+ * replace this when the embed becomes available.
  */
+
+const marqueeReviews: Testimonial[] = [
+  ...testimonials,
+  {
+    quote:
+      "Quote on Monday, financing approved Tuesday, installed by Friday. Painless.",
+    name: "Priya S.",
+    location: "Whole-house · Madison",
+  },
+  {
+    quote:
+      "They protected the floors better than I do. Cleanup was immaculate.",
+    name: "Robert C.",
+    location: "12 windows · Cranford",
+  },
+  {
+    quote:
+      "Got three other quotes — none of them measured. Ed's came in fair and the work was beautiful.",
+    name: "Lauren M.",
+    location: "Picture window · Millburn",
+  },
+  {
+    quote:
+      "Bay window seat looks like it's been there forever. You'd never know it was new.",
+    name: "Karim & Hannah B.",
+    location: "Bay window · Summit",
+  },
+];
 
 export function TrustSignals() {
   return (
@@ -33,7 +62,7 @@ export function TrustSignals() {
             variants={fadeUp}
             className="text-xs font-medium tracking-[0.22em] text-accent-600 uppercase"
           >
-            What Neighbors Say
+            What neighbors say
           </motion.span>
           <motion.h2
             variants={fadeUp}
@@ -41,25 +70,31 @@ export function TrustSignals() {
           >
             Reviewed where it matters.
           </motion.h2>
+
           <motion.div
             variants={fadeUp}
             className="mt-8 inline-flex items-center gap-3 rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm shadow-sm"
           >
-            <span className="font-display text-2xl font-semibold text-slate-900">
-              4.9
+            <span className="font-display text-2xl font-semibold text-slate-900 tabular-nums">
+              <NumberTicker value={4.9} decimals={1} />
             </span>
             <div className="flex">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  className="h-4 w-4 fill-accent-300 text-accent-300"
+                  className="h-4 w-4 fill-accent-500 text-accent-500"
                 />
               ))}
             </div>
-            <span className="text-stone-600">on Google · 200+ reviews</span>
+            <span className="text-stone-600">
+              on Google ·{" "}
+              <NumberTicker value={200} suffix="+" className="font-semibold text-slate-900" />{" "}
+              reviews
+            </span>
           </motion.div>
         </motion.div>
 
+        {/* Featured trio */}
         <motion.div
           variants={fadeIn}
           initial="hidden"
@@ -71,8 +106,9 @@ export function TrustSignals() {
             <motion.figure
               key={r.name}
               variants={fadeUp}
-              className="flex flex-col rounded-sm border border-stone-200 bg-white p-8 shadow-sm"
+              className="relative flex flex-col rounded-2xl border border-stone-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(6,17,42,0.25)]"
             >
+              <Quote className="absolute -top-3 left-7 h-6 w-6 fill-accent-500 text-accent-500" strokeWidth={1.5} />
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
@@ -94,6 +130,27 @@ export function TrustSignals() {
           ))}
         </motion.div>
 
+        {/* Continuously-scrolling secondary reviews */}
+        <div className="relative mt-12">
+          <Marquee pauseOnHover className="[--duration:55s] [--gap:1.5rem]">
+            {marqueeReviews.map((r, i) => (
+              <MarqueeCard key={`${r.name}-${i}`} review={r} />
+            ))}
+          </Marquee>
+          <Marquee
+            pauseOnHover
+            reverse
+            className="mt-4 [--duration:65s] [--gap:1.5rem]"
+          >
+            {[...marqueeReviews].reverse().map((r, i) => (
+              <MarqueeCard key={`r-${r.name}-${i}`} review={r} muted />
+            ))}
+          </Marquee>
+          {/* Edge fades */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-stone-50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-stone-50 to-transparent" />
+        </div>
+
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -103,7 +160,7 @@ export function TrustSignals() {
         >
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-slate-900"
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-accent-600"
           >
             Read all 200+ reviews on Google
             <ChevronRight className="h-4 w-4" />
@@ -111,5 +168,53 @@ export function TrustSignals() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function MarqueeCard({
+  review,
+  muted = false,
+}: {
+  review: Testimonial;
+  muted?: boolean;
+}) {
+  return (
+    <figure
+      className={cn(
+        "flex w-[340px] shrink-0 flex-col gap-3 rounded-xl border border-stone-200 bg-white p-5 shadow-sm",
+        muted && "opacity-90",
+      )}
+    >
+      <div className="flex items-center gap-2">
+        <div className="flex">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star
+              key={i}
+              className="h-3.5 w-3.5 fill-accent-500 text-accent-500"
+            />
+          ))}
+        </div>
+      </div>
+      <blockquote className="font-serif text-sm leading-relaxed text-slate-800 line-clamp-3">
+        &ldquo;{review.quote}&rdquo;
+      </blockquote>
+      <figcaption className="mt-auto flex items-center gap-3 border-t border-stone-100 pt-3">
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-500/15 text-xs font-semibold text-accent-600">
+          {review.name
+            .split(" ")
+            .map((p) => p[0])
+            .join("")
+            .slice(0, 2)}
+        </span>
+        <div className="min-w-0">
+          <div className="truncate text-xs font-semibold text-slate-900">
+            {review.name}
+          </div>
+          <div className="truncate text-[11px] text-stone-500">
+            {review.location}
+          </div>
+        </div>
+      </figcaption>
+    </figure>
   );
 }

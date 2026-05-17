@@ -7,71 +7,83 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Brand palette — "Hard working, attention to detail, taking my time."
+ * Brand palette — "Light, energy, and craftsmanship."
  *
- *   --slate-*  Deep, trustworthy blues. Primary brand color, used for surfaces,
- *              headings, and structural elements.
- *   --stone-*  Warm neutrals. Backgrounds, dividers, secondary text.
- *   --accent-* Muted burnt-gold. Reserved for CTAs and high-priority highlights —
- *              used sparingly so it always reads as "act now".
+ *   --slate-*  Deep ocean navy. The structural color — surfaces, headings,
+ *              and dark sections. Cooler and more saturated than gray.
+ *   --stone-*  Warm cream/sand. Backgrounds and soft surfaces.
+ *   --accent-* Sunlit copper. Reserved for CTAs and high-priority highlights —
+ *              used confidently to drive action.
+ *   --sky-*    Fresh sky-teal. Secondary highlight color for glass, light,
+ *              and educational accents. Pairs with copper for warmth balance.
  */
-:root {       /* warm off-white (stone-50) */       /* deep slate ink */
+:root {
+  /* Ocean navy — structural primary */
+  --slate-50:  #eef3fb;
+  --slate-100: #d4dff1;
+  --slate-200: #a5b8de;
+  --slate-300: #6f88bf;
+  --slate-500: #355796;
+  --slate-700: #1a3266;
+  --slate-900: #0c1d44;
+  --slate-950: #06112a;
 
-  --slate-50:  #f1f4f9;
-  --slate-100: #dde3ee;
-  --slate-200: #b9c4d7;
-  --slate-300: #8a9ab5;
-  --slate-500: #4a5b78;
-  --slate-700: #2b3954;
-  --slate-900: #14203a;
-  --slate-950: #0b1428;
+  /* Warm cream / sand */
+  --stone-50:  #fbf8f1;
+  --stone-100: #f4ede0;
+  --stone-200: #e7ddc8;
+  --stone-300: #ccbf9f;
+  --stone-500: #847761;
+  --stone-700: #4d4636;
+  --stone-900: #221f17;
 
-  --stone-50:  #fafaf9;
-  --stone-100: #f3f1ed;
-  --stone-200: #e6e2dc;
-  --stone-300: #c9c3b8;
-  --stone-500: #7d756a;
-  --stone-700: #4a443c;
-  --stone-900: #211e19;
+  /* Sunlit copper — primary CTA */
+  --accent-50:  #fff3df;
+  --accent-100: #ffe1ab;
+  --accent-300: #f5b657;
+  --accent-500: #df8b1f;       /* primary CTA fill */
+  --accent-600: #b96e10;
+  --accent-700: #8e5208;
 
-  --accent-50:  #fbf3e6;
-  --accent-100: #f3e0b8;
-  --accent-300: #d4a85a;
-  --accent-500: #b07f2c;       /* primary CTA fill */
-  --accent-600: #97681e;
-  --accent-700: #7a5318;
-  --background:  oklch(1 0 0);
-  --foreground:  oklch(0.145 0 0);
+  /* Fresh sky-teal — secondary highlight */
+  --sky-50:  #e6f5f8;
+  --sky-100: #c2e5ec;
+  --sky-300: #6cc2d4;
+  --sky-500: #1f97b1;
+  --sky-700: #0f6a82;
+  --sky-900: #073e55;
   --card:  oklch(1 0 0);
-  --card-foreground:  oklch(0.145 0 0);
+  --card-foreground:  oklch(0.147 0.004 49.3);
   --popover:  oklch(1 0 0);
-  --popover-foreground:  oklch(0.145 0 0);
-  --primary:  oklch(0.205 0 0);
-  --primary-foreground:  oklch(0.985 0 0);
-  --secondary:  oklch(0.97 0 0);
-  --secondary-foreground:  oklch(0.205 0 0);
-  --muted:  oklch(0.97 0 0);
-  --muted-foreground:  oklch(0.556 0 0);
-  --accent:  oklch(0.97 0 0);
-  --accent-foreground:  oklch(0.205 0 0);
+  --popover-foreground:  oklch(0.147 0.004 49.3);
+  --primary:  oklch(0.214 0.009 43.1);
+  --primary-foreground:  oklch(0.986 0.002 67.8);
+  --secondary:  oklch(0.96 0.002 17.2);
+  --secondary-foreground:  oklch(0.214 0.009 43.1);
+  --muted:  oklch(0.96 0.002 17.2);
+  --muted-foreground:  oklch(0.547 0.021 43.1);
+  --accent:  oklch(0.96 0.002 17.2);
+  --accent-foreground:  oklch(0.214 0.009 43.1);
   --destructive:  oklch(0.577 0.245 27.325);
-  --border:  oklch(0.922 0 0);
-  --input:  oklch(0.922 0 0);
-  --ring:  oklch(0.708 0 0);
-  --chart-1:  oklch(0.87 0 0);
-  --chart-2:  oklch(0.556 0 0);
-  --chart-3:  oklch(0.439 0 0);
-  --chart-4:  oklch(0.371 0 0);
-  --chart-5:  oklch(0.269 0 0);
+  --border:  oklch(0.922 0.005 34.3);
+  --input:  oklch(0.922 0.005 34.3);
+  --ring:  oklch(0.714 0.014 41.2);
+  --chart-1:  oklch(0.868 0.007 39.5);
+  --chart-2:  oklch(0.547 0.021 43.1);
+  --chart-3:  oklch(0.438 0.017 39.3);
+  --chart-4:  oklch(0.367 0.016 35.7);
+  --chart-5:  oklch(0.268 0.011 36.5);
   --radius:  0.625rem;
-  --sidebar:  oklch(0.985 0 0);
-  --sidebar-foreground:  oklch(0.145 0 0);
-  --sidebar-primary:  oklch(0.205 0 0);
-  --sidebar-primary-foreground:  oklch(0.985 0 0);
-  --sidebar-accent:  oklch(0.97 0 0);
-  --sidebar-accent-foreground:  oklch(0.205 0 0);
-  --sidebar-border:  oklch(0.922 0 0);
-  --sidebar-ring:  oklch(0.708 0 0);
+  --sidebar:  oklch(0.986 0.002 67.8);
+  --sidebar-foreground:  oklch(0.147 0.004 49.3);
+  --sidebar-primary:  oklch(0.214 0.009 43.1);
+  --sidebar-primary-foreground:  oklch(0.986 0.002 67.8);
+  --sidebar-accent:  oklch(0.96 0.002 17.2);
+  --sidebar-accent-foreground:  oklch(0.214 0.009 43.1);
+  --sidebar-border:  oklch(0.922 0.005 34.3);
+  --sidebar-ring:  oklch(0.714 0.014 41.2);
+  --background:  oklch(1 0 0);
+  --foreground:  oklch(0.147 0.004 49.3);
 }
 
 @theme inline {
@@ -102,12 +114,19 @@
   --color-accent-600: var(--accent-600);
   --color-accent-700: var(--accent-700);
 
+  --color-sky-50:  var(--sky-50);
+  --color-sky-100: var(--sky-100);
+  --color-sky-300: var(--sky-300);
+  --color-sky-500: var(--sky-500);
+  --color-sky-700: var(--sky-700);
+  --color-sky-900: var(--sky-900);
+
   --font-sans:  var(--font-sans);
   --font-display: var(--font-inter);
   --font-serif:   var(--font-source-serif);
   --animate-marquee:  marquee var(--duration) infinite linear;
   --animate-marquee-vertical:  marquee-vertical var(--duration) linear infinite;
-  --font-heading:  var(--font-sans);
+  --font-heading:  var(--font-heading);
   --color-sidebar-ring:  var(--sidebar-ring);
   --color-sidebar-border:  var(--sidebar-border);
   --color-sidebar-accent-foreground:  var(--sidebar-accent-foreground);
@@ -173,33 +192,33 @@ body {
 
 .dark {
 
-       --background:  oklch(0.145 0 0);
+       --background:  oklch(0.147 0.004 49.3);
 
-       --foreground:  oklch(0.985 0 0);
+       --foreground:  oklch(0.986 0.002 67.8);
 
-       --card:  oklch(0.205 0 0);
+       --card:  oklch(0.214 0.009 43.1);
 
-       --card-foreground:  oklch(0.985 0 0);
+       --card-foreground:  oklch(0.986 0.002 67.8);
 
-       --popover:  oklch(0.205 0 0);
+       --popover:  oklch(0.214 0.009 43.1);
 
-       --popover-foreground:  oklch(0.985 0 0);
+       --popover-foreground:  oklch(0.986 0.002 67.8);
 
-       --primary:  oklch(0.922 0 0);
+       --primary:  oklch(0.922 0.005 34.3);
 
-       --primary-foreground:  oklch(0.205 0 0);
+       --primary-foreground:  oklch(0.214 0.009 43.1);
 
-       --secondary:  oklch(0.269 0 0);
+       --secondary:  oklch(0.268 0.011 36.5);
 
-       --secondary-foreground:  oklch(0.985 0 0);
+       --secondary-foreground:  oklch(0.986 0.002 67.8);
 
-       --muted:  oklch(0.269 0 0);
+       --muted:  oklch(0.268 0.011 36.5);
 
-       --muted-foreground:  oklch(0.708 0 0);
+       --muted-foreground:  oklch(0.714 0.014 41.2);
 
-       --accent:  oklch(0.269 0 0);
+       --accent:  oklch(0.268 0.011 36.5);
 
-       --accent-foreground:  oklch(0.985 0 0);
+       --accent-foreground:  oklch(0.986 0.002 67.8);
 
        --destructive:  oklch(0.704 0.191 22.216);
 
@@ -207,33 +226,33 @@ body {
 
        --input:  oklch(1 0 0 / 15%);
 
-       --ring:  oklch(0.556 0 0);
+       --ring:  oklch(0.547 0.021 43.1);
 
-       --chart-1:  oklch(0.87 0 0);
+       --chart-1:  oklch(0.868 0.007 39.5);
 
-       --chart-2:  oklch(0.556 0 0);
+       --chart-2:  oklch(0.547 0.021 43.1);
 
-       --chart-3:  oklch(0.439 0 0);
+       --chart-3:  oklch(0.438 0.017 39.3);
 
-       --chart-4:  oklch(0.371 0 0);
+       --chart-4:  oklch(0.367 0.016 35.7);
 
-       --chart-5:  oklch(0.269 0 0);
+       --chart-5:  oklch(0.268 0.011 36.5);
 
-       --sidebar:  oklch(0.205 0 0);
+       --sidebar:  oklch(0.214 0.009 43.1);
 
-       --sidebar-foreground:  oklch(0.985 0 0);
+       --sidebar-foreground:  oklch(0.986 0.002 67.8);
 
        --sidebar-primary:  oklch(0.488 0.243 264.376);
 
-       --sidebar-primary-foreground:  oklch(0.985 0 0);
+       --sidebar-primary-foreground:  oklch(0.986 0.002 67.8);
 
-       --sidebar-accent:  oklch(0.269 0 0);
+       --sidebar-accent:  oklch(0.268 0.011 36.5);
 
-       --sidebar-accent-foreground:  oklch(0.985 0 0);
+       --sidebar-accent-foreground:  oklch(0.986 0.002 67.8);
 
        --sidebar-border:  oklch(1 0 0 / 10%);
 
-       --sidebar-ring:  oklch(0.556 0 0);
+       --sidebar-ring:  oklch(0.547 0.021 43.1);
 }
 
 /*
@@ -250,4 +269,71 @@ body {
   html {
     @apply font-sans;
        }
+}
+
+/*
+ * Subtle blueprint grid — used as a decorative background on
+ * education sections to evoke craftsmanship and precision.
+ */
+.bg-blueprint {
+  background-color: var(--slate-950);
+  background-image:
+    linear-gradient(rgba(108, 194, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 194, 212, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Animated sunbeam wash for hero CTA buttons */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-sweep {
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 244, 217, 0.35) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4.5s linear infinite;
+}
+
+/* Magic UI — shiny text shimmer */
+@keyframes shiny-text {
+  0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
+  30%, 60%      { background-position: calc(100% + var(--shiny-width)) 0; }
+}
+.animate-shiny-text {
+  animation: shiny-text 8s ease-in-out infinite;
+}
+
+/* Soft drifting copper/teal aurora — used behind dark sections in place of the blueprint grid */
+@keyframes aurora-shift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1); }
+  50%  { transform: translate3d(2%, 1%, 0) scale(1.05); }
+  100% { transform: translate3d(-2%, -1%, 0) scale(1); }
+}
+.bg-aurora {
+  background-color: var(--slate-950);
+  position: relative;
+}
+.bg-aurora::before,
+.bg-aurora::after {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  filter: blur(120px);
+  opacity: 0.55;
+}
+.bg-aurora::before {
+  background: radial-gradient(40% 40% at 20% 30%, rgba(223, 139, 31, 0.35), transparent 60%),
+              radial-gradient(35% 35% at 80% 70%, rgba(31, 151, 177, 0.30), transparent 60%);
+  animation: aurora-shift 22s ease-in-out infinite;
+}
+.bg-aurora::after {
+  background: radial-gradient(30% 30% at 70% 20%, rgba(245, 182, 87, 0.25), transparent 60%),
+              radial-gradient(40% 40% at 30% 80%, rgba(15, 106, 130, 0.30), transparent 60%);
+  animation: aurora-shift 28s ease-in-out infinite reverse;
 }

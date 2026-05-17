@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Inter, Source_Serif_4, Noto_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { WindowListProvider } from "./lib/WindowListContext";
+import { cn } from "@/lib/utils";
+
+const playfairDisplayHeading = Playfair_Display({subsets:['latin'],variable:'--font-heading'});
+
+const notoSans = Noto_Sans({subsets:['latin'],variable:'--font-sans'});
+
 
 // Inter — sturdy, geometric sans for headings and UI. Solid and legible.
 const inter = Inter({
@@ -32,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sourceSerif.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", inter.variable, sourceSerif.variable, "font-sans", notoSans.variable, playfairDisplayHeading.variable)}
     >
       <body className="min-h-full flex flex-col bg-stone-50 text-slate-900">
         <WindowListProvider>{children}</WindowListProvider>
